@@ -1,0 +1,10 @@
+@import "../functions/container";
+
+@each $name, $width in $grid-breakpoints {
+  @media screen and (min-width: $width) {
+    .container {
+      width: container-max-width($name);
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@mixin grays($property, $variable) {
+  #{$property}: var(--#{$variable}, map-get($grays, $variable));
+}
+
+@mixin theme-colors($property, $variable) {
+  #{$property}: var(--#{$variable}, map-get($theme-colors, $variable));
+}

@@ -1,0 +1,5 @@
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  @include font-setting($form-label-font-size, $form-label-font-weight, g-400);
+}

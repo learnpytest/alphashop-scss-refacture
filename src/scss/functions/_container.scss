@@ -1,0 +1,3 @@
+@function container-max-width($max-widths) {
+  @return map-get($container-max-widths, $max-widths);
+}

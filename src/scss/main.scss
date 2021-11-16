@@ -1,0 +1,53 @@
+//font-family: 'Inter', sans-serif;
+//font-family: 'Noto Sans TC', sans-serif;
+//font-family: 'Nunito Sans', sans-serif;
+
+// Configuration
+@import "./reboot";
+@import "./layouts/grid";
+@import "./layouts/containers";
+@import "./utilities";
+
+// Layout & Components
+@import "./components/card";
+
+@import "./components/navbar";
+@import "./forms/labels";
+@import "./forms/form-check";
+@import "./forms/form-control";
+@import "./forms/form-select";
+@import "./components/_progress";
+@import "./components/footer";
+
+// style start
+#main-app {
+  width: 100%;
+}
+
+#main-app[theme="dark"] {
+  --bg-color: var(--g-1100);
+  --bg-font-color: var(--g-0);
+  --nav-bg-color: var(--g-1100);
+  --nav-font-color: var(--g-0);
+  --nav-toggler-icon-color: var(--g-100);
+  --footer-bg-color: var(--g-900);
+  --button-bg-color: var(--g-1100);
+  --text-color: var(--g-0);
+  --button-font-color: var(--text-color);
+  --title-1-color: var(--text-color);
+  --footer-text-color: var(--text-color);
+  --radio-border-color: var(--g-0);
+  --radio-checked-color: var(--g-0);
+}
+
+#main-app[theme="light"] {
+  --bg-color: var(--g-0);
+  --bg-font-color: var(--g-999);
+  --nav-bg-color: var(--g-0);
+  --nav-font-color: var(--g-999);
+  --nav-toggler-icon-color: var(--g-999);
+  --footer-bg-color: var(--g-100);
+  --button-bg-color: var(--g-0);
+  --text-color: var(--g-999);
+  --radio-checked-color: var(--g-999);
+}

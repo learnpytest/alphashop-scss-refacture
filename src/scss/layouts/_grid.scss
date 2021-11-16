@@ -1,0 +1,19 @@
+@import "../mixins/grid";
+@import "../functions/grid";
+
+.row {
+  @include make-row();
+  > * {
+    @include make-col-ready();
+  }
+}
+
+@each $infix, $size in $grid-breakpoints {
+  @media screen and (min-width: $size) {
+    @for $i from 1 through $grid-columns {
+      .col-#{$infix}-#{$i} {
+        width: percentage($i / $grid-columns);
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@mixin make-margin($position, $spacing) {
+  margin-#{$position}: $spacing;
+}
+@mixin make-padding($position, $spacing) {
+  padding-#{$position}: $spacing;
+}

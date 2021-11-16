@@ -1,0 +1,106 @@
+.card-group {
+  @media screen and (min-width: 1200px) {
+    padding: 1.5rem;
+  }
+  @include font-setting($card-font-size, $card-font-weight, g-999);
+  font-family: var(--ff-secondary);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  min-height: fit-content;
+  border: 1px solid #f0f0f5;
+}
+.card {
+  .row {
+    // card image與card text左右橫向排版，不換行
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1200px) {
+    .row {
+      .col {
+        margin: 0;
+      }
+      .card-body {
+        .card-title,
+        .card-text {
+          height: fit-content;
+        }
+        flex-direction: row;
+        flex-wrap: wrap;
+        .card-title {
+          order: 1;
+          min-width: fit-content;
+        }
+        .card-text.text-one {
+          order: 3;
+          width: 100%;
+          justify-content: flex-start;
+        }
+        .card-text.text-two {
+          order: 2;
+          width: 0;
+          flex: 1;
+        }
+      }
+    }
+  }
+
+  .card-img {
+    width: 100px;
+  }
+  img {
+    width: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+  }
+  .card-body {
+    .card-title {
+      line-height: 1.5rem;
+    }
+    .card-text span {
+      display: inline-block;
+      text-align: center;
+    }
+    .count > .minus,
+    .count > .plus {
+      width: 1.6rem;
+      font-size: 1.6rem;
+      line-height: 1.6rem;
+      @include grays(color, g-900);
+      border-radius: 50%;
+      background-color: #e6e6eb;
+      &:hover {
+        cursor: pointer;
+        background-color: $bd-pink-bright;
+        @include grays(color, g-0);
+      }
+    }
+    .count > span + span {
+      margin-left: 1rem;
+    }
+    .item-price {
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 700;
+    }
+  }
+}
+
+.card-footer {
+  .col {
+    border-top: 1px solid #f0f0f5;
+    height: 4rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  .cloth-summary-price,
+  .cloth-shipment-price {
+    font-family: "Nunito Sans", sans-serif;
+    @include font-setting(null, 700, colors(bg-dark));
+  }
+}

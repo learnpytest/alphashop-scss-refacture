@@ -1,0 +1,269 @@
+@import "./functions/colors";
+// variables
+
+// Color system
+$white: #fff !default;
+$gray-50: #f0f0f5 !default;
+$gray-100: #e5e5e5 !default;
+$gray-150: #afb1bd !default;
+$gray-200: rgba(255, 255, 255, 0.6) !default;
+$gray-300: #999999 !default;
+$gray-400: #808080 !default;
+$gray-500: rgba(255, 255, 255, 0.4) !default;
+$gray-600: #6f6f6f !default;
+$gray-700: #5e5e5e !default;
+$gray-750: #4a4a4a !default;
+$gray-800: #383838 !default;
+$gray-900: #333333 !default;
+$gray-999: #2a2a2a !default;
+$gray-1100: #121212 !default;
+$black: #000 !default;
+
+$grays: (
+  "g-0": $white,
+  "g-50": $gray-50,
+  "g-100": $gray-100,
+  "g-150": $gray-150,
+  "g-200": $gray-200,
+  "g-300": $gray-300,
+  "g-400": $gray-400,
+  "g-500": $gray-500,
+  "g-600": $gray-600,
+  "g-700": $gray-700,
+  "g-750": $gray-750,
+  "g-800": $gray-800,
+  "g-900": $gray-900,
+  "g-999": $gray-999,
+  "g-1100": $gray-1100,
+  "black": $black,
+) !default;
+
+$pink: #f67599 !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+
+$primary: $pink !default;
+$secondary: $gray-800 !default;
+$success: $green !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-999 !default;
+$important: $orange !default;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "important": $important,
+) !default;
+
+$bd-pink: #f67599;
+$bd-pink-bright: lighten(saturate($bd-pink, 5%), 15%);
+$bd-pink-light: lighten(saturate($bd-pink, 5%), 20%);
+
+// docs-start font variables
+$font-weight-base: 400 !default;
+
+$font-weight-light: 300 !default;
+$font-weight-normal: $font-weight-base !default;
+$font-weight-slight-bold: 500 !default;
+$font-weight-bold: 700 !default;
+
+$font-size-base: 1rem !default;
+
+$fs-1: $font-size-base * 2.5 !default;
+$fs-2: $font-size-base * 2 !default;
+$fs-3: $font-size-base * 1.75 !default;
+$fs-4: $font-size-base * 1.5 !default;
+$fs-5: $font-size-base * 1.25 !default;
+$fs-6: $font-size-base * 1.15 !default;
+$fs-7: $font-size-base !default;
+
+$font-sizes: (
+  "fs-1": $fs-1,
+  "fs-2": $fs-2,
+  "fs-3": $fs-3,
+  "fs-4": $fs-4,
+  "fs-5": $fs-5,
+  "fs-6": $fs-6,
+  "fs-7": $fs-7,
+) !default;
+
+$h1-font-size: $fs-2 !default;
+$h2-font-size: $fs-3 !default;
+$h3-font-size: $fs-4 !default;
+$h4-font-size: $fs-6 !default;
+$h5-font-size: $fs-7 !default;
+
+// docs-end font variables
+
+// docs-start form-check-variables
+$form-check-label-disabled-opacity: 0.5 !default;
+$form-check-hover-border: $dark !default;
+
+// docs-start form-select-variables
+$form-select-focus-border-color: $primary !default;
+$form-select-option-bg-color: $bd-pink-light !default;
+$form-select-option-color: $white !default;
+// docs-end form-select-variables
+
+//docs-start form-label-variables
+$form-label-font-weight: $font-weight-bold !default;
+$form-label-font-size: $font-size-base * 0.75 !default;
+$navbar-link-font-size: $font-size-base !default;
+$navbar-link-font-weight: $font-weight-slight-bold !default;
+$card-font-size: $font-size-base !default;
+$card-font-weight: $font-weight-base !default;
+//docs-end form-label-variables
+
+//box shadow
+$input-focus-width: 0.25rem;
+$input-focus-color: $bd-pink-light !default;
+$form-select-focus-width: $input-focus-width !default;
+$form-select-focus-box-shadow: 0 0 0 $form-select-focus-width $input-focus-color !default;
+
+:root {
+  //fonts
+  --ff-primary: "Inter", sans-serif;
+  --ff-secondary: "Noto Sans TC", sans-serif;
+  --ff-english: "Nunito Sans", sans-serif;
+
+  @each $prop, $var in $grays {
+    --#{$prop}: #{$var};
+  }
+  @each $prop, $var in $theme-colors {
+    --#{$prop}: #{$var};
+  }
+  @each $prop, $var in $font-sizes {
+    --#{$prop}: #{$var};
+  }
+
+  //theme color all by default
+  --bg-color: var(--g-0);
+  --nav-bg-color: var(--g-0);
+  --nav-font-color: var(--g-999);
+  --nav-toggler-icon-color: var(--g-999);
+}
+
+// Navs
+
+// docs-start nav-theme-variables
+$nav-bg-color: var(--nav-bg-color) !default;
+$nav-font-color: var(--nav-font-color) !default;
+
+$nav-dark-font-color: "g-0" !default;
+$nav-dark-hover-color: $bd-pink-light !default;
+$nav-dark-active-color: $bd-pink-bright !default;
+
+$nav-light-bg-color: var(--bg-color) !default;
+$nav-light-font-color: "g-999" !default;
+$nav-light-hover-color: $bd-pink-light !default;
+$nav-light-active-color: $bd-pink-bright !default;
+
+$colors: (
+  bg-header-color: var(--g-0),
+  bg-color: var(--g-0),
+  body-color: var(--g-999),
+  bg-dark: var(--g-1000),
+  bg-light-gray: var(--g-50),
+  text-gray: var(--g-400),
+  white: var(--g-0),
+  dark: var(--g-900),
+  button-next-active: var(--primary),
+  button-next-font: var(--g-0),
+  button-prev-font: var(--g-1000),
+  dark-gray: var(--g-750),
+  secondary-gray: var(--g-300),
+  light-gray: var(--g-150),
+  slight-gray: var(--g-50),
+  footer-bg: var(--g-100),
+  footer-item-title: var(--g-999),
+  footer-item-content: var(--g-400),
+);
+
+//cursor
+$form-check-label-cursor: pointer !default;
+
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 375px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+) !default;
+
+// Grid containers
+$container-max-widths: (
+  xs: 90%,
+  sm: 90%,
+  md: 85%,
+  lg: 85%,
+  xl: 80%,
+) !default;
+
+// Grid columns
+// set the number of columns and gutter
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 1.5rem !default;
+
+//spacing
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 0.25,
+  ),
+  2: (
+    $spacer * 0.5,
+  ),
+  3: (
+    $spacer * 0.75,
+  ),
+  4: $spacer,
+  5: (
+    $spacer * 1.25,
+  ),
+  6: (
+    $spacer * 1.5,
+  ),
+  7: (
+    $spacer * 1.75,
+  ),
+  8: (
+    $spacer * 2,
+  ),
+) !default;
+
+// basic size
+$sizes: (
+  0: 0%,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%,
+) !default;
+// boxshadow
+$box-shadow: 0.2rem 0.1rem 1rem rgba(colors(dark-gray), 0.15) !default;
+
+// dropdown variables
+$dropdown-padding-y: $spacer;
+$dropdown-padding-x: $spacer;
+$dropdown-spacer: $spacer;
+
+$dropdown-toggler-icon-color: var(--dropdown-toggler-icon-color);
+
+$dropdown-font-size: var(--dropdown-font-size) !default;
+$dropdown-font-weight: var(--dropdown-font-weight) !default;
+$dropdown-font-color: var(--dropdown-font-color) !default;
+
+// zindex-stack
+$zindex-dropdown: 1000 !default;

@@ -1,0 +1,13 @@
+.form-select {
+  &:focus {
+    @include theme-colors(border-color, primary);
+    outline: 0;
+    box-shadow: $form-select-focus-box-shadow;
+  }
+  option {
+    background-color: $form-select-option-bg-color;
+    &:hover {
+      color: #fff;
+    }
+  }
+}

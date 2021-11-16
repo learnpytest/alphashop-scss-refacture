@@ -1,0 +1,172 @@
+//Nav
+@import "../functions/container";
+
+// 負責建立一個navbar橫向的容器
+.navbar {
+  height: 4.5rem;
+  width: 100%;
+  background-color: $nav-bg-color;
+  color: $nav-font-color;
+  i {
+    height: 1.2rem;
+  }
+  .nav-link {
+    line-height: 1.2rem;
+    @include font-setting(
+      $navbar-link-font-size,
+      $navbar-link-font-weight,
+      $nav-font-color
+    );
+    font-family: var(--ff-secondary);
+  }
+  // container負責一個容器寬度，在不同尺寸下有不同的寬度，並且在螢幕中橫向置中，作為支持RWD的布局
+  @each $name, $width in $grid-breakpoints {
+    @media screen and (min-width: $width) {
+      > .container {
+        width: container-max-width($name);
+        margin: 0 auto;
+        display: flex;
+
+        // navbar-nav預設的連結間距根據容器寬度有所變化
+        .navbar-collapse {
+          @if $width <992px {
+            width: 100%;
+          } @else if $width < 1199px {
+            width: ($width / 2 - 136px);
+            .navbar-nav {
+              .nav-item + .nav-item {
+                margin-left: ($width / 50);
+              }
+            }
+          } @else if $width >= 1200px {
+            .navbar-nav {
+              .nav-item + .nav-item {
+                margin-left: ($width / 30);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // navbar-collapse 負責收合的區塊
+  // 預設為直向的排版
+  // 直向展開的定位
+  .navbar-collapse {
+    position: absolute;
+    top: 72px;
+    z-index: 99;
+    height: 38rem;
+    background-color: $nav-bg-color;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-out;
+    .navbar-nav {
+      min-height: fit-content;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      text-align: center;
+      .nav-item:first-child {
+        height: 4rem;
+      }
+      .nav-item + .nav-item {
+        height: 4.5rem;
+      }
+      .nav-link {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+    // nav-icons-wrapper 定義圖示區塊的定位，靠右邊貼齊container，裡面是flex排版
+    .nav-icons-wrapper {
+      margin: 0 auto;
+      min-width: 6.5rem;
+      display: inline-flex;
+      justify-content: space-between;
+    }
+  }
+
+  // 摺疊的樣式
+  @media screen and (min-width: 0px) {
+    .navbar-collapse {
+      opacity: 0;
+      transition: transform 0.4s ease-out;
+      transform-origin: top;
+      transform: scale(1, 0);
+    }
+    .expand.navbar-collapse {
+      transform: scale(1, 1);
+      transform: opacity 0.3s ease-out 0.2s;
+      opacity: 1;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .navbar-collapse {
+      transform: scale(1, 1);
+      transform: opacity 0s null 0s;
+      transition: transform 0s;
+
+      opacity: 1;
+    }
+  }
+
+  // 負責定義中間的logo區塊的預設尺寸
+  .navbar-brand {
+    height: 24px;
+    width: 136px;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  // .navbar-toggler負責定義按鈕的預設樣式，裡面用svg的圖片顯示三條線的圖示，並且在992px以上的螢幕消失
+  .navbar-toggler {
+    background-color: transparent;
+    &:focus {
+      border: 1px solid null;
+      @include theme-colors(border-color, primary);
+    }
+    &:hover {
+      cursor: pointer;
+      @include theme-colors(color, primary);
+    }
+    margin: 0;
+    .navbar-toggler-icon {
+      width: 1.4rem;
+      height: 1rem;
+      color: var(--nav-toggler-icon-color);
+    }
+  }
+}
+
+.navbar.navbar-expand {
+  @media screen and (min-width: 992px) {
+    .navbar-toggler {
+      display: none;
+    }
+    .navbar-collapse {
+      position: unset;
+      z-index: 0;
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      height: fit-content;
+      .navbar-nav {
+        flex-direction: row;
+        .nav-item {
+          height: fit-content;
+        }
+      }
+      .nav-icons-wrapper {
+        margin: 0;
+        margin-left: auto;
+        .icon:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

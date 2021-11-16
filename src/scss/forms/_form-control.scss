@@ -1,0 +1,14 @@
+// General form controls
+
+.form-control {
+  display: block;
+  width: 100%;
+  @extend %input-style;
+
+  &:focus,
+  &:hover {
+    @include theme-colors(border-color, primary);
+    outline: 0;
+    box-shadow: $form-select-focus-box-shadow;
+  }
+}

@@ -1,0 +1,25 @@
+.site-footer {
+  //footer樣式
+  height: 284px;
+  width: 100%;
+
+  //footer裡面的文字字型
+  @include font-style-footer;
+
+  font-family: var(--ff-secondary);
+  .container {
+    display: flex;
+    height: 100%;
+    ul {
+      height: 150px;
+      max-height: 284px;
+      margin: auto;
+      flex: 1;
+      text-align: center;
+    }
+    ul.alphashop-logo {
+      height: fit-content;
+      text-align: center;
+    }
+  }
+}

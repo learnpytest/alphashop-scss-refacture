@@ -1,0 +1,8 @@
+//step numbers generator
+@mixin setStepNums($num) {
+  @for $i from 1 through $num {
+    &:nth-child(#{$i}) .step::after {
+      content: "#{$i}";
+    }
+  }
+}

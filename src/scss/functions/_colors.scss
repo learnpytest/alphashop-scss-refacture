@@ -1,0 +1,8 @@
+@function colors($color-var-name) {
+  @return map-get($colors, $color-var-name);
+}
+
+// Tint a color: mix a color with white
+@function tint-color($color, $weight) {
+  @return mix(white, $color, $weight);
+}

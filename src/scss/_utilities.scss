@@ -1,0 +1,38 @@
+@import "./mixins/fonts";
+@import "./mixins/sizes";
+
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+  z-index: 99;
+}
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 99;
+}
+
+.top-100 {
+  top: 100%;
+}
+
+@each $infix, $size in $grid-breakpoints {
+  @media screen and (min-width: $size) {
+    .d-#{$infix}-none {
+      display: none;
+    }
+    .d-#{$infix}-flex {
+      display: flex;
+    }
+    .d-#{$infix}-block {
+      display: block;
+    }
+    .d-#{$infix}-inline-block {
+      display: inline-block;
+    }
+  }
+}

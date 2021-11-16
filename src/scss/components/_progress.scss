@@ -1,0 +1,97 @@
+//
+//progress/indicators
+//
+@import "../mixins/progress";
+
+//step numbers indicator
+
+.slide-indicators {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  position: relative;
+  justify-content: space-between;
+  button {
+    z-index: 10;
+    min-width: fit-content;
+    line-height: 2rem;
+    display: flex;
+
+    span:last-child {
+      white-space: nowrap;
+      margin-right: 0.5rem;
+    }
+    //Generate step numbers
+    @include setStepNums(3);
+    .step {
+      margin: 0 0.5rem;
+      display: inline-block;
+      width: 2rem;
+      border: 1px solid colors(light-gray);
+      border-radius: 50%;
+      @include font-setting(1rem, 700, colors(light-gray));
+    }
+
+    &.active > .step {
+      @include grays(background-color, g-999);
+      @include grays(color, g-0);
+    }
+    &.complete > .step::after {
+      content: "\2714";
+    }
+  }
+  & .progress {
+    @include grays(background-color, g-150);
+    height: 2px;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+  }
+}
+
+// slide control previous and next buttons
+.visually-hidden {
+  visibility: hidden;
+}
+.slide-control-next,
+.slide-control-prev {
+  margin: 0;
+  height: 3rem;
+  border-radius: 8px;
+}
+.slide-control-next {
+  width: 100%; // default 100
+}
+
+.slide-control-start.slide-control-prev,
+.slide-control-start.slide-control-next {
+  display: inline-block;
+  width: 45%;
+}
+.slide-control-prev {
+  margin-right: auto;
+  padding: 0;
+  text-align: start;
+  &::before {
+    content: "\2190";
+    margin-right: 12px;
+    font-size: 1.25rem;
+  }
+}
+.slide-control-next::after {
+  content: "\2192";
+  font-size: 1.25rem;
+  margin-left: 13px;
+}
+.btn-primary {
+  // 字型
+  @include font-setting(0.75rem, 500, colors(button-next-font));
+  background-color: colors(button-next-active);
+}
+
+.border-top-1 {
+  border-top: 1px solid #ccc;
+}
